@@ -23,10 +23,13 @@
         var app = new ZiggeoApi.V2.Application({
             token:"88fa1f9970a55a7d72cae3bcce6431be"
         });
-        var recordElement = document.getElementById('my-recorder');
-        var embedding = ZiggeoApi.V2.Recorder.findByElement(recordElement);
-        embedding.on("verified", function(){
-            alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
+        var recorder = new ZiggeoApi.V2.Recorder({
+            element: document.getElementById('recorderReplacer');
+            attrs:{ width: 320, height: 240, theme: "modern", themecolor: "red"}
+        });
+        recorder.activate();
+        recorder.on("verified", function(){
+            alert('dear lord');
         });
     </script>
 
@@ -661,7 +664,7 @@
                         <li>Don't photoshop yourself</li>
                         </ul>
                     </p>
-                    <ziggeorecorder id="my-recorder" ziggeo-theme="modern" ziggeo-themecolor="red"></ziggeorecorder>
+                    <div id="recorderReplacer"></div>
                     
                 </div>
 
