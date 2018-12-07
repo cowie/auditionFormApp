@@ -11,16 +11,12 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 })
 
-//var pg = require('pg');
-//var conString = process.env.DATABASE_URL || 'postgres://cdegour:@localhost/sHoHealth';
-
 pool.on('error', (err, client) => {
   console.error("unexpected error on idle client", err);
   process.exit(-1);
 });
 
 router.get('/', function(req, res, next){
-  //res.sendFile(path.join(__dirname + '/../views/index.html'));
   res.render('index', {zigToken: ziggeoAPIKey});
 });
 

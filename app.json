@@ -1,15 +1,16 @@
 {
-	"name": "Simple Form Capture Demo",
-	"description": "A simple app that captures information from a form and sends to HerokuConnect in the event things are in place.",
+	"name": "Audition App",
+	"description": "Simple form to take in a video and send via HC to SFDC for processing",
 	"repository": "https://github.com/cowie/simpleHCForm",
 	"scripts":{
-		
+		"start": "node ./bin/www"
 	},
 	"env":{
 		
 	},
 	"addons":[
 		"heroku-postgresql:hobby-dev",
-		"herokuconnect:demo"
+		"herokuconnect:demo",
+		"ziggeo:free"
 	]
 }
