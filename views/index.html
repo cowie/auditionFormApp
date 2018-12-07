@@ -61,14 +61,15 @@
 
         <script>
                 document.addEventListener("DOMContentLoaded", function() {
+                    document.getElementById("submitBtn").disabled = true;
                     var recorder = new ZiggeoApi.V2.Recorder({
                         element: document.getElementById('recorderReplacer'),
                         attrs:{ width: 320, height: 240, theme: "modern", themecolor: "red"}
                     });
                     recorder.activate();
                     recorder.on("verified", function(){
-                        alert('dear lord');
                         document.getElementById('inputVidID').value = recorder.get("video");
+                        document.getElementById("submitBtn").disabled = false;
                     });
                   });
         </script>
@@ -703,7 +704,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10">
-                                    <button class="btn btn-success" type="submit">Sign up!</button>
+                                    <button id="submitBtn" class="btn btn-success" type="submit" >Sign up!</button>
                                 </div>
                             </div>
 
