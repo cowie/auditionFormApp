@@ -68,6 +68,7 @@
                     recorder.activate();
                     recorder.on("verified", function(){
                         alert('dear lord');
+                        document.getElementById('inputVidID').value = recorder.get("video");
                     });
                   });
         </script>
