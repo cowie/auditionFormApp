@@ -633,7 +633,7 @@
                 <div class="col-lg-4">
                     <h3>The Audition Process</h3>
                     <p>Create your audition video, upload it to youtube</p>
-                    <p>Copy the video ID and provide it to us</p>
+                    <p>Once you get the alert, you are ready to submit!</p>
                     <p>We'll have a combination of robots and experts review your video</p>
                     <p>The magic happens, and maybe you become famous. I'm a website not a fortune teller</p>
                 </div>
@@ -648,11 +648,13 @@
                         </ul>
                     </p>
                     <ziggeorecorder id="my-recorder" ziggeo-theme="modern" ziggeo-themecolor="red"></ziggeorecorder>
-                    <script>var embedded_recorder = ZiggeoApi.V2.Recorder.findByElement(document.getElementById('my-recorder'));
-                            embedded_recorder.on("verified", function(){
-                              alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
-                              document.getElementById('inputVidID').value = embedded_recorder.get('video');
-                            });
+                    <script>
+                        var embedded_recorder = ZiggeoApi.V2.Recorder.findByElement(document.getElementById('my-recorder'));
+                        console.log('this the recorder');
+                        console.log(embedded_recorder);
+                        embedded_recorder.on("verified", function(){
+                            alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
+                        });
                     </script>
                 </div>
 
