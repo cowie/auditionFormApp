@@ -34,6 +34,7 @@ router.get('/player/:videoID', function(req, res, next) {
 });
 
 router.post('/candidateAdd', (req, res, next) => {
+  console.table(res.body);
   pool.connect((err, client, done) => {
     if (err) throw err;
     client.query('INSERT INTO "salesforce"."candidate__c"("video_id__c", "email_address__c", "first_name__c", "last_name__c", "twitter_handle__c", "name") values($1, $2, $3, $4, $5, $6) returning id',
