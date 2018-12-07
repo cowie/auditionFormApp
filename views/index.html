@@ -23,6 +23,11 @@
         var app = new ZiggeoApi.V2.Application({
             token:"88fa1f9970a55a7d72cae3bcce6431be"
         });
+        var recordElement = document.getElementById('my-recorder');
+        var embedding = ZiggeoApi.V2.Recorder.findByElement(recordElement);
+        embedding.on("verified", function(){
+            alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
+        });
     </script>
 
 </head>
@@ -726,15 +731,7 @@
         <script src="/assets/js/jquery-func.js" type="text/javascript"></script>
 
         <script src="/assets/js/smoothscroll.js" type="text/javascript"></script>
-        <script>
-            app.embed_events.on("loaded", function(embedded, ){
-                console.log('fired');
-                console.log(embedded);
-                embedded.on("verified", function(){
-                    alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
-                });
-            });
-        </script>
+        
     </body>
 </body>
 
