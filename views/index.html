@@ -57,6 +57,18 @@
         <link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet" />
         <script src="//vjs.zencdn.net/4.6/video.js"></script>
 
+
+        <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var embedded_recorder = ZiggeoApi.V2.Recorder.findByElement(document.getElementById('my-recorder'));
+                        console.log('this the recorder');
+                        console.log(embedded_recorder);
+                        embedded_recorder.on("verified", function(){
+                            alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
+                        });
+                  });
+        </script>
+
         <style>
             #login {
             display:none;
@@ -79,6 +91,8 @@
             margin-top:0px;
         }
     </style>
+
+
     </head>
 
     <body data-offset="0" data-spy="scroll" data-target="#navbar-main">
@@ -649,12 +663,7 @@
                     </p>
                     <ziggeorecorder id="my-recorder" ziggeo-theme="modern" ziggeo-themecolor="red"></ziggeorecorder>
                     <script>
-                        var embedded_recorder = ZiggeoApi.V2.Recorder.findByElement(document.getElementById('my-recorder'));
-                        console.log('this the recorder');
-                        console.log(embedded_recorder);
-                        embedded_recorder.on("verified", function(){
-                            alert("Submitted a new video with token ' " + embedded_recorder.get('video') + "'!");
-                        });
+                        
                     </script>
                 </div>
 
