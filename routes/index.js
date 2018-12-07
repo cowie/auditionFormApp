@@ -3,6 +3,9 @@ var router = express.Router();
 var path = require('path');
 
 
+var ziggeoAPIKey = process.env.ZIGGEO_URL;
+ziggeoAPIKey = ziggeoAPIKey.substring(ziggeoAPIKey.indexOf('//') + 2, ziggeoAPIKey.lastIndexOf(':'));
+
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -17,7 +20,8 @@ pool.on('error', (err, client) => {
 });
 
 router.get('/', function(req, res, next){
-  res.sendFile(path.join(__dirname + '/../views/index.html'));
+  //res.sendFile(path.join(__dirname + '/../views/index.html'));
+  res.render('index', {zigToken: ziggeoAPIKey});
 });
 
 router.get('/thanks', function(req, res, next){
@@ -26,7 +30,7 @@ router.get('/thanks', function(req, res, next){
 
 
 router.get('/player/:videoID', function(req, res, next) {
-  res.render('player', { title: 'Express', zigToken: '88fa1f9970a55a7d72cae3bcce6431be', videoID: req.params.videoID});
+  res.render('player', { title: 'Express', zigToken: ziggeoAPIKey, videoID: req.params.videoID});
 });
 
 router.post('/candidateAdd', (req, res, next) => {
@@ -44,27 +48,6 @@ router.post('/candidateAdd', (req, res, next) => {
       });
   });
 });
-
-router.post('/newsletterAdd', function(req, res, next){
-  //lets just save it into lead
-  pg.connect(conString, function(err, client, done){
-    if(err){
-      console.error(err);res.send('error connecting to db: ' + err);
-    }
-    else{
-      console.log('entering new newsletter request into local db');
-      client.query('INSERT INTO salesforce.lead(firstname, lastname, email) values($1, $2, $3) returning id', 
-        [req.body.fname, req.body.lname, req.body.email],
-        function(err, result){
-          if(err){console.error(err);res.send('error inserting into the table: ' + err + '<br/>');}
-          else{console.log('inserted data, all is well');res.sendFile(path.join(__dirname+ '/../views/thankYou.html'));}
-			
-        }
-      );
-    }
-  });
-});
-
 
 
 module.exports = router;

@@ -1,0 +1,154 @@
+doctype html
+html
+  head
+    script(src='/static/111213/js/perf/stub.js', type='text/javascript')
+    link.user(href='/sCSS/34.0/sprites/1438195776000/Theme3/default/gc/zen-componentsCompatible.css', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='//assets-cdn.ziggeo.com/v2-stable/ziggeo.css')
+    script(src='//assets-cdn.ziggeo.com/v2-stable/ziggeo.js')
+    link.user(href='/sCSS/34.0/sprites/1438195776000/Theme3/default/gc/elements.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1438195776000/Theme3/default/gc/common.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1441046052000/Theme3/gc/dStandard.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1443201808000/Theme3/00D61000000YBpN/00561000000x3KC/gc/dCustom0.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1443201808000/Theme3/00D61000000YBpN/00561000000x3KC/gc/dCustom1.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1443201808000/Theme3/00D61000000YBpN/00561000000x3KC/gc/dCustom2.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1438195776000/Theme3/default/gc/extended.css', rel='stylesheet', type='text/css')
+    link.user(href='/sCSS/34.0/sprites/1438195776000/Theme3/default/gc/setup.css', rel='stylesheet', type='text/css')
+    script.
+      var app = new ZiggeoApi.V2.Application({
+      token:"#{zigToken}"
+      });
+  body(data-offset='0', data-spy='scroll', data-target='#navbar-main')
+    meta(http-equiv='PRAGMA', content='NO-CACHE')
+    meta(http-equiv='Expires', content='Mon, 01 Jan 1990 12:00:00 GMT')
+    meta(charset='utf-8')
+    meta(content='width=device-width, initial-scale=1.0', name='viewport')
+    meta(content='The Audition WEBSITE', name='description')
+    link(href='/assets/ico/favicon.png', rel='shortcut icon')
+    title  The Audition
+    link(href='/assets/css/bootstrap.css', rel='stylesheet')
+    link(href='/assets/css/main.css', rel='stylesheet')
+    link(href='/assets/css/icomoon.css', rel='stylesheet')
+    link(href='/assets/css/animate-custom.css', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Raleway:400,300,700', rel='stylesheet', type='text/css')
+    script(src='/assets/js/jquery.min.js')
+    script(src='/assets/js/modernizr.custom.js', type='text/javascript')
+    link(href='//vjs.zencdn.net/4.6/video-js.css', rel='stylesheet')
+    script(src='//vjs.zencdn.net/4.6/video.js')
+    script.
+      document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("submitBtn").disabled = true;
+      var recorder = new ZiggeoApi.V2.Recorder({
+      element: document.getElementById('recorderReplacer'),
+      attrs:{ width: 320, height: 240, theme: "modern", themecolor: "red"}
+      });
+      recorder.activate();
+      recorder.on("verified", function(){
+      document.getElementById('inputVidID').value = recorder.get("video");
+      document.getElementById("submitBtn").disabled = false;
+      });
+      });
+    style.
+      #login {
+      display:none;
+      }
+      .facebookLoginBtn {
+      height: 29px;
+      background: transparent !important;
+      position: relative;
+      top: -2px;
+      }
+      @media (max-width: 992px) {
+      .facebookLoginBtn {
+      display: none;
+      }
+      #login {
+      display:block;
+      }
+      }
+      .section-divider {
+      margin-top:0px;
+      }
+    #navbar-main
+      .navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .navbar-header
+            button.navbar-toggle(data-target='.navbar-collapse', data-toggle='collapse', type='button')
+              img(src='/assets/img/portfolio/cirrusicononly.png')
+            a.navbar-brand.hidden-xs.hidden-sm(href='#home', style='position: relative;top: 6px;')
+              img(src='/assets/img/portfolio/cirrusicononly.png', style='background:black;')
+          .navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                a.smoothScroll(href='/consumers/s/', target='_blank') Support
+              li
+                a.smoothScroll(href='#about') About
+    #headerwrap(name='home')
+      header.clearfix
+        h1
+          img(src='/assets/img/portfolio/cirrusicononlylarge.png')
+        p A True Experience.
+        p Experience The Audition Today
+    #contact.container(name='contact')
+      .row
+        br
+        h1.centered THIS IS YOUR CHANCE
+        hr
+        br
+        br
+        .col-lg-4
+          h3 The Audition Process
+          p Create your audition video, upload it to youtube
+          p Once you get the alert, you are ready to submit!
+          p We'll have a combination of robots and experts review your video
+          p
+            | The magic happens, and maybe you become famous. I'm a website not a fortune teller
+        .col-lg-4
+          h3 Video Format
+          p
+            | Do the monologue from that one movie.
+            br
+            |                         Tips:
+            br
+          ul
+            li Indoors, with no background noise
+            li Keep your video under 1 minute
+            li Don't photoshop yourself
+          p
+          #recorderReplacer
+        .col-lg-4
+          h3 Apply
+          p Register your audition to us here!
+          p
+          form.form-horizontal(role='form', method='post', action='/candidateAdd')
+            .form-group
+              label.col-lg-4.control-label(for='fname')
+              .col-lg-10
+                input#fname.form-control(name='fname', placeholder='First Name', type='text')
+              label.col-lg-4.control-label(for='lname')
+              .col-lg-10
+                input#lname.form-control(name='lname', placeholder='Last Name', type='text')
+            .form-group
+              label.col-lg-4.control-label(for='inputEmail1')
+              .col-lg-10
+                input#inputEmail1.form-control(name='email', placeholder='Email', type='email')
+            .form-group
+              label.col-lg-4.control-label(for='inputTwitter')
+              .col-lg-10
+                input#inputTwitter.form-control(name='twitter', placeholder='twitter', type='text')
+            input#inputVidID(type='hidden', name='vidID')
+            .form-group
+              .col-lg-10
+                button#submitBtn.btn.btn-success(type='submit') Sign up!
+          p
+    #footerwrap
+      .container
+        h4
+          | Created by 
+          a(href='#') The Audition
+          |  - Copyright 2018
+    script(src='/assets/js/bootstrap.min.js', type='text/javascript')
+    script(src='/assets/js/retina.js', type='text/javascript')
+    script(src='/assets/js/jquery.easing.1.3.js', type='text/javascript')
+    script(src='/assets/js/jquery-func.js', type='text/javascript')
+    script(src='/assets/js/smoothscroll.js', type='text/javascript')
